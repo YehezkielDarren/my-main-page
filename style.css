@@ -1,0 +1,77 @@
+/* Custom styles terinspirasi dari cursor.com */
+body {
+  font-family: "Inter", sans-serif;
+  background-color: #000000;
+  color: #e2e8f0; /* slate-200 */
+  background-image: radial-gradient(
+      circle at top right,
+      rgba(128, 0, 128, 0.2),
+      transparent 40%
+    ),
+    radial-gradient(
+      circle at bottom left,
+      rgba(0, 128, 255, 0.2),
+      transparent 40%
+    );
+  background-attachment: fixed;
+}
+
+/* Gradient border effect */
+.gradient-border {
+  border: 1px solid transparent;
+  background-clip: padding-box;
+  position: relative;
+}
+.gradient-border::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: -1;
+  margin: -1px;
+  border-radius: inherit;
+  background: linear-gradient(to right, #38bdf8, #818cf8, #c084fc);
+}
+
+/* Subtle glow on hover */
+.card-glow {
+  transition: box-shadow 0.3s ease-in-out, transform 0.3s ease-in-out;
+  background-color: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+.card-glow:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 0 25px rgba(192, 132, 252, 0.3),
+    0 0 15px rgba(56, 189, 248, 0.3);
+}
+
+/* Typing effect cursor */
+.typed-cursor {
+  opacity: 1;
+  animation: blink 0.7s infinite;
+}
+@keyframes blink {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+/* Section header animation */
+.section-header {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+}
+
+.section-header.visible {
+  opacity: 1;
+  transform: translateY(0);
+}

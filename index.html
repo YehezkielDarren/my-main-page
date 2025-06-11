@@ -15,15 +15,28 @@
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap"
       rel="stylesheet"
     />
+    <link rel="stylesheet" href="style.css" />
 
     <!-- Font Awesome for Icons -->
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
     />
+    <!-- File CSS kustom Anda (jika ada) -->
     <link rel="stylesheet" href="style.css" />
+
+    <!-- Konfigurasi Tailwind -->
+    <script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {},
+        },
+      };
+    </script>
   </head>
-  <body class="antialiased">
+  <
+  <body class="antialiased bg-black dark:bg-slate-900">
     <!-- Header / Navbar -->
     <header
       class="fixed top-0 left-0 right-0 z-50 bg-black/50 backdrop-blur-lg"
@@ -32,7 +45,9 @@
         class="container mx-auto px-6 py-4 flex justify-between items-center"
       >
         <a href="index.html" class="text-xl font-bold tracking-wider">YD</a>
-        <nav class="hidden md:flex space-x-8">
+
+        <!-- Navigasi untuk Desktop (md ke atas) -->
+        <nav class="hidden md:flex space-x-8 items-center">
           <a href="#about" class="hover:text-sky-400 transition-colors"
             >Tentang Saya</a
           >
@@ -46,11 +61,86 @@
             >Kontak</a
           >
         </nav>
-        <a
-          href="https://www.instagram.com/ydarpw_/"
-          class="hidden md:block bg-slate-800 hover:bg-slate-700 transition-colors text-white py-2 px-4 rounded-lg"
-          >Hubungi Saya</a
+
+        <!-- Grup Tombol Kanan -->
+        <div class="flex items-center space-x-4">
+          <a
+            href="https://www.instagram.com/ydarpw_/"
+            class="hidden md:block bg-slate-800 hover:bg-slate-700 transition-colors text-white py-2 px-4 rounded-lg"
+            >Hubungi Saya</a
+          >
+
+          <!-- Tombol Dark Mode Toggle -->
+          <button
+            id="theme-toggle"
+            type="button"
+            class="text-slate-400 hover:bg-slate-700 focus:outline-none focus:ring-4 focus:ring-slate-700 rounded-lg text-sm p-2.5"
+          >
+            <svg
+              id="theme-toggle-dark-icon"
+              class="hidden w-5 h-5"
+              fill="currentColor"
+              viewBox="0 0 20 20"
+            >
+              <path
+                d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"
+              ></path>
+            </svg>
+            <svg
+              id="theme-toggle-light-icon"
+              class="hidden w-5 h-5"
+              fill="currentColor"
+              viewBox="0 0 20 20"
+            >
+              <path
+                d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.707.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"
+                fill-rule="evenodd"
+                clip-rule="evenodd"
+              ></path>
+            </svg>
+          </button>
+
+          <!-- Tombol Menu Hamburger (md ke bawah) -->
+          <button
+            id="hamburger-button"
+            class="md:hidden text-slate-400 hover:text-white focus:outline-none p-2.5"
+          >
+            <i class="fas fa-bars fa-lg"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Menu untuk Mobile (Dropdown) -->
+      <div id="mobile-menu" class="hidden md:hidden">
+        <div
+          class="px-2 pt-2 pb-3 space-y-1 sm:px-3 flex flex-col items-center"
         >
+          <a
+            href="#about"
+            class="block text-slate-300 hover:text-white px-3 py-2 rounded-md text-base font-medium"
+            >Tentang Saya</a
+          >
+          <a
+            href="#skills"
+            class="block text-slate-300 hover:text-white px-3 py-2 rounded-md text-base font-medium"
+            >Keahlian</a
+          >
+          <a
+            href="#projects"
+            class="block text-slate-300 hover:text-white px-3 py-2 rounded-md text-base font-medium"
+            >Proyek</a
+          >
+          <a
+            href="#contact"
+            class="block text-slate-300 hover:text-white px-3 py-2 rounded-md text-base font-medium"
+            >Kontak</a
+          >
+          <a
+            href="https://www.instagram.com/ydarpw_/"
+            class="mt-2 w-full text-center bg-slate-800 hover:bg-slate-700 transition-colors text-white py-2 px-4 rounded-lg"
+            >Hubungi Saya</a
+          >
+        </div>
       </div>
     </header>
 
@@ -66,12 +156,15 @@
             class="w-32 h-32 rounded-full object-cover"
           />
         </div>
-        <h1 class="text-5xl md:text-7xl font-black tracking-tighter mb-4">
+        <!-- Ukuran font disesuaikan untuk mobile dan desktop -->
+        <h1
+          class="text-4xl sm:text-5xl md:text-7xl font-black tracking-tighter mb-4"
+        >
           Yehezkiel Darren P.W.
         </h1>
         <p
           id="typing-text"
-          class="text-xl md:text-2xl text-slate-400 max-w-3xl mx-auto h-8 mb-8"
+          class="text-lg sm:text-xl md:text-2xl text-slate-400 max-w-3xl mx-auto h-8 mb-8"
         ></p>
         <div class="flex justify-center space-x-6">
           <a
@@ -95,7 +188,9 @@
 
       <!-- About / Pendidikan Section -->
       <section id="about" class="py-24">
-        <h2 class="section-header text-4xl font-bold text-center mb-12">
+        <h2
+          class="section-header text-3xl md:text-4xl font-bold text-center mb-12"
+        >
           Tentang Saya & Pendidikan
         </h2>
         <div class="max-w-4xl mx-auto grid md:grid-cols-2 gap-12 items-center">
@@ -134,93 +229,150 @@
 
       <!-- Skills Section -->
       <section id="skills" class="py-24">
-        <h2 class="section-header text-4xl font-bold text-center mb-12">
+        <h2
+          class="section-header text-3xl md:text-4xl font-bold text-center mb-12"
+        >
           Bahasa & Teknologi
         </h2>
+        <!-- Grid dibuat responsif, 2 kolom di mobile, 4 di desktop -->
         <div
-          class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 max-w-4xl mx-auto"
+          class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-8 max-w-4xl mx-auto"
         >
           <div
             class="card-glow flex flex-col items-center justify-center p-6 rounded-lg text-center"
           >
-            <i class="fab fa-html5 fa-3x mb-3 text-orange-500"></i>
-            <span class="font-semibold">HTML5</span>
+            <i class="fab fa-html5 fa-3x mb-3 text-orange-500"></i
+            ><span class="font-semibold">HTML5</span>
           </div>
           <div
             class="card-glow flex flex-col items-center justify-center p-6 rounded-lg text-center"
           >
-            <i class="fab fa-css3-alt fa-3x mb-3 text-blue-500"></i>
-            <span class="font-semibold">CSS3</span>
+            <i class="fab fa-css3-alt fa-3x mb-3 text-blue-500"></i
+            ><span class="font-semibold">CSS3</span>
           </div>
           <div
             class="card-glow flex flex-col items-center justify-center p-6 rounded-lg text-center"
           >
-            <i class="fab fa-js-square fa-3x mb-3 text-yellow-400"></i>
-            <span class="font-semibold">JavaScript</span>
+            <i class="fab fa-js-square fa-3x mb-3 text-yellow-400"></i
+            ><span class="font-semibold">JavaScript</span>
           </div>
           <div
             class="card-glow flex flex-col items-center justify-center p-6 rounded-lg text-center"
           >
-            <i class="fab fa-java fa-3x mb-3 text-green-500"></i>
-            <span class="font-semibold">Java</span>
+            <i class="fab fa-java fa-3x mb-3 text-red-500"></i
+            ><span class="font-semibold">Java</span>
           </div>
           <div
             class="card-glow flex flex-col items-center justify-center p-6 rounded-lg text-center"
           >
-            <i class="fab fa-python fa-3x mb-3 text-blue-400"></i>
-            <span class="font-semibold">Python</span>
+            <i class="fab fa-python fa-3x mb-3 text-blue-400"></i
+            ><span class="font-semibold">Python</span>
           </div>
           <div
             class="card-glow flex flex-col items-center justify-center p-6 rounded-lg text-center"
           >
-            <i class="fas fa-database fa-3x mb-3 text-indigo-400"></i>
-            <span class="font-semibold">MySQL</span>
+            <i class="fas fa-database fa-3x mb-3 text-indigo-400"></i
+            ><span class="font-semibold">MySQL</span>
           </div>
         </div>
       </section>
 
       <!-- Projects Section -->
-      <section id="projects" class="py-0">
-        <h2 class="section-header text-4xl font-bold text-center mb-12">
+      <section id="projects" class="py-24">
+        <h2
+          class="section-header text-3xl md:text-4xl font-bold text-center mb-12"
+        >
           Proyek Saya
         </h2>
-        <div class="flex flex-wrap justify-center gap-8 max-w-4xl mx-auto">
-          <!-- Project Card 1 -->
-          <div class="card-glow rounded-lg overflow-hidden group">
+        <div class="flex flex-wrap justify-center gap-8 max-w-5xl mx-auto">
+          <div
+            class="card-glow rounded-lg overflow-hidden group w-full md:w-5/12 lg:w-[45%]"
+          >
             <div class="p-6">
               <h3 class="text-2xl font-bold mb-2">Random Draft Pick MLBB</h3>
-              <p class="text-slate-400 mb-4">
+              <p class="text-slate-400 mb-4 min-h-[6rem]">
                 Aplikasi web sederhana untuk mengacak tim hero Mobile Legends
                 secara adil dan unik, dibangun dengan HTML, CSS, dan JavaScript.
               </p>
               <div class="flex flex-wrap gap-2 mb-4">
                 <span
-                  class="bg-sky-900/50 text-sky-300 text-xs font-semibold px-2.5 py-1 rounded-full"
-                  >HTML</span
+                  class="bg-orange-600 text-white text-xs font-semibold px-2.5 py-1 rounded-full"
+                  >HTML5</span
                 >
                 <span
-                  class="bg-sky-900/50 text-sky-300 text-xs font-semibold px-2.5 py-1 rounded-full"
-                  >CSS</span
+                  class="bg-blue-600 text-white text-xs font-semibold px-2.5 py-1 rounded-full"
+                  >CSS3</span
                 >
                 <span
-                  class="bg-sky-900/50 text-sky-300 text-xs font-semibold px-2.5 py-1 rounded-full"
+                  class="bg-yellow-500 text-black text-xs font-semibold px-2.5 py-1 rounded-full"
                   >JavaScript</span
                 >
               </div>
               <a
                 href="https://draft-pick-gacor.vercel.app"
+                target="_blank"
                 class="inline-block text-white font-semibold group-hover:text-sky-400 transition-colors"
-              >
-                Lihat Proyek
+                >Lihat Proyek
                 <i
                   class="fas fa-arrow-right ml-1 transition-transform group-hover:translate-x-1"
-                ></i>
-              </a>
+                ></i
+              ></a>
+            </div>
+          </div>
+          <div
+            class="card-glow rounded-lg overflow-hidden group w-full md:w-5/12 lg:w-[45%]"
+          >
+            <div class="p-6">
+              <h3 class="text-2xl font-bold mb-2">Belum Ada</h3>
+              <p class="text-slate-400 mb-4 min-h-[6rem]">
+                Deskripsi proyek yang akan datang bisa diletakkan di sini.
+              </p>
+              <div class="flex flex-wrap gap-2 mb-4">
+                <span
+                  class="bg-gray-600 text-white text-xs font-semibold px-2.5 py-1 rounded-full"
+                  >TBA</span
+                >
+              </div>
+              <a
+                href="#"
+                class="inline-block text-gray-500 font-semibold cursor-not-allowed"
+                >Lihat Proyek <i class="fas fa-arrow-right ml-1"></i
+              ></a>
             </div>
           </div>
         </div>
       </section>
     </main>
+
+    <!-- Footer / Contact -->
+    <footer id="contact" class="border-t border-slate-800 mt-24">
+      <div class="container mx-auto px-6 py-12 text-center">
+        <h2 class="text-3xl font-bold mb-4">Mari Terhubung</h2>
+        <p class="text-slate-400 mb-8 max-w-lg mx-auto">
+          Saya selalu terbuka untuk diskusi, kolaborasi, atau sekadar bertukar
+          sapa. Jangan ragu untuk menghubungi saya.
+        </p>
+        <div class="flex justify-center space-x-8 mb-8">
+          <a
+            href="https://www.instagram.com/ydarpw_/"
+            target="_blank"
+            aria-label="Instagram"
+            class="text-slate-400 hover:text-white transition-transform transform hover:scale-110"
+            ><i class="fab fa-instagram fa-2x"></i
+          ></a>
+          <a
+            href="https://www.github.com/YehezkielDarren"
+            target="_blank"
+            aria-label="GitHub"
+            class="text-slate-400 hover:text-white transition-transform transform hover:scale-110"
+            ><i class="fab fa-github fa-2x"></i
+          ></a>
+        </div>
+        <p class="text-slate-500">
+          &copy; <span id="year"></span> Yehezkiel Darren Putra Wardoyo.
+        </p>
+      </div>
+    </footer>
 
     <!-- Footer / Contact -->
     <footer id="contact" class="border-t border-slate-800 mt-24">
@@ -254,8 +406,48 @@
       </div>
     </footer>
 
+    <!-- Blok Skrip Utama -->
     <script>
       document.addEventListener("DOMContentLoaded", function () {
+        // --- LOGIKA TOGGLE TEMA DIMASUKKAN DI SINI ---
+        const themeToggleBtn = document.getElementById("theme-toggle");
+        const darkIcon = document.getElementById("theme-toggle-dark-icon");
+        const lightIcon = document.getElementById("theme-toggle-light-icon");
+
+        function applyInitialTheme() {
+          if (
+            localStorage.getItem("theme") === "dark" ||
+            (!("theme" in localStorage) &&
+              window.matchMedia("(prefers-color-scheme: dark)").matches)
+          ) {
+            document.documentElement.classList.add("dark");
+            if (lightIcon) lightIcon.classList.remove("hidden");
+            if (darkIcon) darkIcon.classList.add("hidden");
+          } else {
+            document.documentElement.classList.remove("dark");
+            if (darkIcon) darkIcon.classList.remove("hidden");
+            if (lightIcon) lightIcon.classList.add("hidden");
+          }
+        }
+
+        if (themeToggleBtn) {
+          applyInitialTheme();
+
+          themeToggleBtn.addEventListener("click", () => {
+            if (darkIcon) darkIcon.classList.toggle("hidden");
+            if (lightIcon) lightIcon.classList.toggle("hidden");
+
+            document.documentElement.classList.toggle("dark");
+
+            if (document.documentElement.classList.contains("dark")) {
+              localStorage.setItem("theme", "dark");
+            } else {
+              localStorage.setItem("theme", "light");
+            }
+          });
+        }
+
+        // --- LOGIKA LAINNYA ---
         // Set current year in footer
         document.getElementById("year").textContent = new Date().getFullYear();
 
@@ -272,6 +464,8 @@
         let isDeleting = false;
 
         function type() {
+          if (!typingTextElement) return; // Guard clause
+
           const currentText = texts[textIndex];
           let displayedText = "";
 
@@ -285,7 +479,7 @@
 
           typingTextElement.innerHTML = `${displayedText}<span class="typed-cursor">|</span>`;
 
-          let typeSpeed = isDeleting ? 100 : 200;
+          let typeSpeed = isDeleting ? 100 : 150;
 
           if (!isDeleting && charIndex === currentText.length) {
             typeSpeed = 2000; // Pause at end

@@ -1,7 +1,6 @@
 /* Custom styles terinspirasi dari cursor.com */
 body {
   font-family: "Inter", sans-serif;
-  background-color: #000000;
   color: #e2e8f0; /* slate-200 */
   background-image: radial-gradient(
       circle at top right,
@@ -74,4 +73,9 @@ body {
 .section-header.visible {
   opacity: 1;
   transform: translateY(0);
+}
+/* Transisi warna yang halus saat berganti tema */
+body,
+button {
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
